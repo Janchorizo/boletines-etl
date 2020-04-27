@@ -1,0 +1,4 @@
+lxml
+ipykernel
+ipython
+httplib2
