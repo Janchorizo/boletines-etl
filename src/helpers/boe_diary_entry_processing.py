@@ -1,13 +1,14 @@
 """Utility methods for processing BOE diary entries."""
 
 from typing import Dict, Tuple
+import lxml
 import functools
 
 from . import helpers
 from . import boe
 
 
-def get_labels_from_tree(tree) -> Tuple:
+def get_labels_from_tree(tree: lxml.etree._Element) -> Tuple:
     """Extract labels of a diary entry's analysis section."""
     tree_search = helpers.use_tree_for_search(tree)
     topics = tree_search(boe.EntryXpath.topics)
@@ -21,7 +22,7 @@ def get_labels_from_tree(tree) -> Tuple:
     return labels
 
 
-def get_reference_details(node) -> Dict:
+def get_reference_details(node: lxml.etree._Element) -> Dict:
     """Extract details of a diary entry reference."""
     tree_search = helpers.use_tree_for_search(node)
     reference_type_search = tree_search(boe.EntryXpath.reference_type)
@@ -42,7 +43,7 @@ def get_reference_details(node) -> Dict:
     return details
 
 
-def get_references_from_tree(tree) -> Tuple:
+def get_references_from_tree(tree: lxml.etree._Element) -> Tuple:
     """Extract details and type of the references of a diary entry."""
     tree_search = helpers.use_tree_for_search(tree)
     prev = tree_search(boe.EntryXpath.previous)
