@@ -21,6 +21,14 @@ def get_labels_from_tree(tree: lxml.etree._Element) -> Tuple:
                           tuple)
     return labels
 
+def get_type_from_tree(tree: lxml.etree._Element) -> Tuple:
+    """Extract the type of a diary entry's analysis section."""
+    tree_search = helpers.use_tree_for_search(tree)
+    entry_type = tree_search(boe.EntryXpath.entry_range)[0]
+    entry_type_code = entry_type.get(boe.EntryAttribute.range_code)
+
+    return (entry_type.text, entry_type_code)
+
 
 def get_reference_details(node: lxml.etree._Element) -> Dict:
     """Extract details of a diary entry reference."""
@@ -52,11 +60,11 @@ def get_references_from_tree(tree: lxml.etree._Element) -> Tuple:
     prev_references = helpers.pipe(
         prev,
         functools.partial(map, lambda x: {**get_reference_details(x), **{'category': 'previous'}}),
-        functools.partial(map, lambda x: 'referenced' in x))
+        functools.partial(filter, lambda x: 'referenced' in x))
 
     post_references = helpers.pipe(
         post,
         functools.partial(map, lambda x: {**get_reference_details(x), **{'category': 'posterior'}}),
-        functools.partial(map, lambda x: 'referenced' in x))
+        functools.partial(filter, lambda x: 'referenced' in x))
 
     return (*prev_references, *post_references)
