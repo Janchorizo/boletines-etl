@@ -1,3 +1,4 @@
+import os
 import json
 from enum import Enum
 import pymysql
@@ -9,11 +10,21 @@ from params.s3_params import S3Params
 from params.db_params import DBParams
 from tasks.process_boe_diary_entry import ProcessBoeDiaryEntry
 from helpers import boe_db
+from helpers import boe
 
-def entry_id_2_output_path (entry_id: str) -> str:
-    return path.join(GlobalParams().base_dir,
+
+def entry_id_2_output_path (entry_id: str, base_dir: str) -> str:
+    '''Create local filesystem path for the diary entry output.'''
+
+    if not isinstance(base_dir, str): 
+        raise TypeError(f'Expected a str and got a {type(base_dir)} for base_dir.')
+
+    if not boe.is_valid_diary_entry_id(entry_id):
+        raise ValueError(f"'{entry_id}' is not a valid entry id.")
+
+    return os.path.join(base_dir,
                      'diary_entries', 
-                     f"boe_diary_entry_raw_{entry_id}.xml")
+                     f"boe_diary_entry_processed_{entry_id}.xml")
 
 class SaveOption(Enum):
     DATABASE = 1
@@ -30,10 +41,11 @@ class SaveEntryToS3(luigi.Task):
         return ProcessBoeDiaryEntry(entry_id=entry_id, entry_url=entry_url)
 
     def output(self):
+        path = entry_id_2_output_path(self.entry_id, GlobalParams().base_dir)
         client = s3.S3Client(aws_access_key_id = S3Params().aws_access_key_id, 
                              aws_secret_access_key = S3Params().aws_secret_access_key, 
                              aws_session_token = S3Params().aws_session_token)
-        return s3.S3Target(entry_id_2_output_path(self.entry_id), None, client)
+        return s3.S3Target(path, None, client)
 
     def run(self):
         with self.input().open() as f:
@@ -101,10 +113,11 @@ class IndexEntryInES(luigi.Task):
         return ProcessBoeDiaryEntry(entry_id=entry_id, entry_url=entry_url)
 
     def output(self):
+        path = entry_id_2_output_path(self.entry_id, GlobalParams().base_dir)
         client = s3.S3Client(aws_access_key_id = S3Params().aws_access_key_id, 
                              aws_secret_access_key = S3Params().aws_secret_access_key, 
                              aws_session_token = S3Params().aws_session_token)
-        return s3.S3Target(entry_id_2_output_path(self.entry_id), None, client)
+        return s3.S3Target(path, None, client)
 
     def run(self):
         with self.input().open() as f:
@@ -115,7 +128,7 @@ class IndexEntryInES(luigi.Task):
 
 class SaveBoeDiaryEntry(luigi.WrapperTask):
     entry = luigi.DictParameter()
-    save_options = luigi.TupleParameter(default={SaveOption.DATABASE})
+    save_options = luigi.TupleParameter(default={SaveOption.DATABASE.value})
     
     def requires(self):
         tasks = []
