@@ -12,3 +12,4 @@ mysql-connector-python
 pydocstyle
 pycodestyle
 pylint
+pytest
