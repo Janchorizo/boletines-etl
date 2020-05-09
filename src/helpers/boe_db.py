@@ -43,7 +43,7 @@ def boe_diary_entry_is_valid(item: Dict) -> bool:
         item.values()))
 
     compulsary_not_empty = all(map(
-        lambda key: len(item.get(key)) > 0,
+        lambda key: len(str(item.get(key))) > 0,
         compulsary_keys))
 
     return keys_are_present and all_are_str and compulsary_not_empty
