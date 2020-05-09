@@ -1,45 +1,60 @@
+"""BOE XML-related utilities."""
+
 import datetime
 import re
 from enum import Enum
 
-def is_valid_diary_entry_id(entry_id: str) -> bool:
-    '''Check whether a string is a valid diary entry identifier.
-    Valid ones are expectde to have a similar format to "BOE-A-2020-4859".
-    '''
 
-    if not isinstance(entry_id, str): return False
+def is_valid_diary_entry_id(entry_id: str) -> bool:
+    """Check whether a string is a valid diary entry identifier.
+
+    Valid ones are expectde to have a similar format to "BOE-A-2020-4859".
+    """
+    if not isinstance(entry_id, str):
+        return False
 
     valid_id = re.compile(r'BOE-[A-Z]-\d{4}-\d+')
     if valid_id.fullmatch(entry_id):
         return True
-    else:
-        return False
+
+    return False
+
 
 def summary_url_for_date(date: datetime.datetime) -> str:
-    '''Create an URL for fetching the correspondant BOE summary.
+    """Create an URL for fetching the correspondant BOE summary.
+
     Refer to https://www.boe.es/datosabiertos/documentos/SumariosBOE_v_1_0.pdf
-    '''
+    """
+    if not date:
+        return None
+    if not isinstance(date, datetime.datetime):
+        return None
 
-    if not date: return
-    if not type(date) is datetime.datetime: return
-
+    # variable naming according to the BOE docs
     pub = 'BOE'
-    I = 'S'
+    i = 'S'
     date_string = date.strftime('%Y%m%d')
 
-    return f'https://boe.es/diario_boe/xml.php?id={pub}-{I}-{date_string}'
+    return f'https://boe.es/diario_boe/xml.php?id={pub}-{i}-{date_string}'
+
 
 def file_url_for_resource(resource: str) -> str:
-    '''Create an URL for summary entry resource such as PDF files.'''
+    """Create an URL for summary entry resource such as PDF files."""
+    if not resource:
+        return None
+    if resource.find(' ') != -1:
+        return None
 
-    if not resource: return
-    if resource.find(' ') != -1: return
+    url = ''.join([
+        'https://www.boe.es',
+        resource if resource.startswith('/') else f'/{resource}'
+        ])
+    return url
 
-    resource_prepended = resource if resource.startswith('/') else f'/{resource}'
-
-    return f'https://www.boe.es{resource_prepended}'
 
 class SummaryXpath:
+    """Xpath strings for nodes in a BOE diary summary."""
+
     # Accessible from the diary's root
     publication_type = '/sumario/meta/pub'
     publication_date = '/sumario/meta/fecha'
@@ -62,7 +77,10 @@ class SummaryXpath:
     item_htm_url = './urlHtm'
     item_xml_url = './urlXml'
 
+
 class SummaryAttribute:
+    """Available properties in BOE diary lxml elements."""
+
     diary_nbo = 'nbo'
     summary_nbo_id = 'id'
     section_number = 'num'
@@ -74,7 +92,10 @@ class SummaryAttribute:
     pdf_url_sz_kbytes = 'szKBytes'
     item_control = 'control'
 
+
 class EntryXpath:
+    """Xpath strings for nodes in a BOE entry."""
+
     enty_id = '/documento/metadatos/identificador'
     title = '/documento/metadatos/titulo'
     diary_number = '/documento/metadatos/diario_numero'
@@ -93,7 +114,10 @@ class EntryXpath:
     contents = '/documento/texto'
     paragraphs = '/documento/texto/p'
 
+
 class EntryAttribute:
+    """Available properties in BOE entry lxml elements."""
+
     department_code = 'codigo'
     range_code = 'codigo'
     topic_code = 'codigo'
@@ -103,6 +127,9 @@ class EntryAttribute:
     reference_entry_id = 'referencia'
     reference_type_code = 'codigo'
 
+
 class EntryParagraphType(Enum):
+    """Types of paragraphs findable on a BOE entry."""
+
     paragraph = 'parrafo'
     article = 'articulo'
