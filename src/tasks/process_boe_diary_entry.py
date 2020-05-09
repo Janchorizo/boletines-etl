@@ -41,8 +41,6 @@ class ProcessBoeDiaryEntry(luigi.Task):
         tree = et.fromstring(entry_content.encode())
         labels = processing.get_labels_from_tree(tree)
         references = processing.get_references_from_tree(tree)
-
-        print({'labels': labels, 'references': references})
                                 
         with self.output().open('w') as f:
             json.dump({'labels': labels, 'references': references}, f)
