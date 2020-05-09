@@ -19,8 +19,14 @@ def get_labels_from_tree(tree):
 
 def get_reference_details(node):
     tree_search = helpers.use_tree_for_search(node)
-    reference_type = tree_search(boe.EntryXpath.reference_type)[0]
-    reference_text = tree_search(boe.EntryXpath.reference_text)[0]
+    reference_type_search = tree_search(boe.EntryXpath.reference_type)
+    reference_text_search = tree_search(boe.EntryXpath.reference_text)
+    
+    if len(reference_type_search) == 0 or len(reference_text_search) == 0:
+        return {}
+
+    reference_type = reference_type_search = reference_type[0]
+    reference_text = reference_text_search = reference_text[0]
 
     details = {
         'referenced': node.get(boe.EntryAttribute.reference_entry_id),
@@ -35,12 +41,15 @@ def get_references_from_tree(tree):
     prev = tree_search(boe.EntryXpath.previous)
     post = tree_search(boe.EntryXpath.posterior)
     
-    prev_references = map(
-            lambda x: {**get_reference_details(x), **{'category': 'previous'}}, 
-            prev)
-    post_references = map(
-            lambda x: {**get_reference_details(x), **{'category': 'posterior'}}, 
-            post)
+    prev_references = helpers.pipe(prev,
+        functools.partial(map, lambda x: {**get_reference_details(x), **{'category': 'previous'}}),
+        functools.partial(map, lambda x: 'referenced' in x)
+        )
+
+    post_references = helpers.pipe(post,
+        functools.partial(map, lambda x: {**get_reference_details(x), **{'category': 'posterior'}}),
+        functools.partial(map, lambda x: 'referenced' in x)
+        )
     
     return [*prev_references, *post_references]
 
