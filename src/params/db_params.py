@@ -5,4 +5,3 @@ class DBParams(luigi.Config):
     user = luigi.Parameter()
     password = luigi.Parameter()
     database = luigi.Parameter()
-
