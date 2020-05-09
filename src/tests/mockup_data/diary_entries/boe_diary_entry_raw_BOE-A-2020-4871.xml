@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<documento fecha_actualizacion="20200507105601">
+  <metadatos>
+    <identificador>BOE-A-2020-4871</identificador>
+    <titulo>Resolución de 30 de abril de 2020, de la Universidad San Pablo-CEU, por la que se publican modificaciones de planes de estudios de Máster.</titulo>
+    <diario codigo="BOE">Boletín Oficial del Estado</diario>
+    <diario_numero>127</diario_numero>
+    <seccion>3</seccion>
+    <subseccion/>
+    <departamento codigo="310">Universidades</departamento>
+    <rango codigo="1370">Resolución</rango>
+    <numero_oficial/>
+    <fecha_disposicion>20200430</fecha_disposicion>
+    <fecha_publicacion>20200507</fecha_publicacion>
+    <fecha_vigencia/>
+    <fecha_derogacion/>
+    <letra_imagen>A</letra_imagen>
+    <pagina_inicial>31787</pagina_inicial>
+    <pagina_final>31789</pagina_final>
+    <suplemento_letra_imagen/>
+    <suplemento_pagina_inicial/>
+    <suplemento_pagina_final/>
+    <estatus_legislativo>L</estatus_legislativo>
+    <origen_legislativo codigo="1">Estatal</origen_legislativo>
+    <estado_consolidacion codigo=""/>
+    <judicialmente_anulada>N</judicialmente_anulada>
+    <vigencia_agotada>N</vigencia_agotada>
+    <estatus_derogacion>N</estatus_derogacion>
+    <url_epub/>
+    <url_pdf>/boe/dias/2020/05/07/pdfs/BOE-A-2020-4871.pdf</url_pdf>
+    <url_pdf_catalan/>
+    <url_pdf_euskera/>
+    <url_pdf_gallego/>
+    <url_pdf_valenciano/>
+  </metadatos>
+  <analisis>
+    <notas/>
+    <materias>
+      <materia codigo="426" orden="">Bachillerato</materia>
+      <materia codigo="3125" orden="">Educación Secundaria Obligatoria</materia>
+      <materia codigo="5545" orden="">Periodismo</materia>
+      <materia codigo="5605" orden="">Planes de estudios</materia>
+      <materia codigo="5752" orden="">Profesorado</materia>
+      <materia codigo="7088" orden="">Universidad San Pablo CEU</materia>
+    </materias>
+    <alertas/>
+    <referencias>
+      <anteriores>
+        <anterior referencia="BOE-A-2014-8681" orden="2030">
+          <palabra codigo="270">MODIFICA</palabra>
+          <texto>el plan publicado porResolución de 28 de julio de 2014</texto>
+        </anterior>
+        <anterior referencia="BOE-A-2014-8679" orden="2030">
+          <palabra codigo="270">MODIFICA</palabra>
+          <texto>el plan publicado por Resolución de 28 de julio de 2014</texto>
+        </anterior>
+        <anterior referencia="BOE-A-2007-18770" orden="3060">
+          <palabra codigo="440">DE CONFORMIDAD con</palabra>
+          <texto>loso arts. 28.3 y 26.3 del Real Decreto 1393/2007, de 29 de octubre</texto>
+        </anterior>
+      </anteriores>
+      <posteriores/>
+    </referencias>
+  </analisis>
+  <texto>
+    <p class="parrafo">De conformidad con lo dispuesto en los artículos 28.3 y 26.3 del Real Decreto 1393/2007, de 29 de octubre, por el que se establece la ordenación de las enseñanzas universitarias oficiales, y en relación con los planes de estudios publicados mediante Resolución de 28 de julio de 2014, de la Universidad San Pablo-CEU, en el «Boletín Oficial del Estado» núm. 195, de 12 de agosto de 2014, señalados a continuación:</p>
+    <p class="parrafo_2">Máster Universitario en Formación para Profesor de Educación Secundaria Obligatoria y Bachillerato</p>
+    <p class="parrafo">Máster Universitario en Periodismo Cultural</p>
+    <p class="parrafo_2">Habiendo sido modificados los mencionados planes de estudios conducentes a la obtención de los anteriores títulos oficiales ya verificados, con informe favorable de la Agencia Nacional de Evaluación de la Calidad y Acreditación, de fecha 30 de septiembre de 2013 y 8 de febrero de 2016 respectivamente, este Rectorado ha resuelto ordenar la publicación de dichas modificaciones, quedando estructurados los planes de estudios según consta en los Anexos de esta Resolución.</p>
+    <p class="parrafo_2">Madrid, 30 de abril de 2020.–La Rectora, Rosa María Visiedo Claverol.</p>
+    <p class="anexo_num">ANEXO</p>
+    <p class="anexo_tit">Plan de estudios del título de Máster Universitario en Formación para Profesor de Educación Secundaria Obligatoria y Bachillerato por la Universidad San Pablo-CEU</p>
+    <p class="centro_cursiva">Planificación de las enseñanzas</p>
+    <p class="centro_redonda">Resumen del plan de estudios y su distribución en créditos</p>
+    <table class="tabla">
+      <thead>
+        <tr>
+          <th class="cabeza_tabla">Tipo de materia</th>
+          <th class="cabeza_tabla">Créditos ECTS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cuerpo_tabla_izq">Obligatorias.</td>
+          <td class="cuerpo_tabla_centro">20</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">Optativas Especialidad.</td>
+          <td class="cuerpo_tabla_centro">24</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">Practicum.</td>
+          <td class="cuerpo_tabla_centro">10</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">Trabajo Fin de Máster.</td>
+          <td class="cuerpo_tabla_centro">6</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">  Total.</td>
+          <td class="cuerpo_tabla_centro">60</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="centro_redonda">Distribución general del plan de estudios, con dos modalidades de enseñanza: presencial y semipresencial.</p>
+    <table class="tabla_ancha">
+      <thead>
+        <tr>
+          <th class="cabeza_tabla">Módulo y Materia</th>
+          <th class="cabeza_tabla">ECTS</th>
+          <th class="cabeza_tabla">Tipo</th>
+          <th class="cabeza_tabla">Organiz. temporal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cuerpo_tabla_izq" colspan="4">Módulo Genérico común modalidad presencial y semipresencial (12 ECTS).</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">Aprendizaje y Desarrollo de la Personalidad.</td>
+          <td class="cuerpo_tabla_centro">4</td>
+          <td class="cuerpo_tabla_izq">Obligatoria.</td>
+          <td class="cuerpo_tabla_izq">Semestral.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">Procesos y Contextos Educativos.</td>
+          <td class="cuerpo_tabla_centro">4</td>
+          <td class="cuerpo_tabla_izq">Obligatoria.</td>
+          <td class="cuerpo_tabla_izq">Semestral.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">Sociedad, Familia y Educación.</td>
+          <td class="cuerpo_tabla_centro">4</td>
+          <td class="cuerpo_tabla_izq">Obligatoria.</td>
+          <td class="cuerpo_tabla_izq">Semestral.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq" colspan="4">Módulo Básico común modalidad presencial y semipresencial (8 ECTS).</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">Antropología.</td>
+          <td class="cuerpo_tabla_centro">4</td>
+          <td class="cuerpo_tabla_izq">Obligatoria.</td>
+          <td class="cuerpo_tabla_izq">Semestral.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">Historia y Características de los Grandes Modelos Educativos.</td>
+          <td class="cuerpo_tabla_centro">4</td>
+          <td class="cuerpo_tabla_izq">Obligatoria.</td>
+          <td class="cuerpo_tabla_izq">Semestral.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq" colspan="4">Módulo Específico (24 ECTS).</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">
+            <p class="cuerpo_tabla_izq">Complementos para la Formación Disciplinar.</p>
+            <p class="cuerpo_tabla_izq">Especialización en Lengua y Literatura.</p>
+            <p class="cuerpo_tabla_izq">Especialización en Matemáticas.</p>
+            <p class="cuerpo_tabla_izq">Especialización en Ciencias Experimentales.</p>
+            <p class="cuerpo_tabla_izq">Especialización en Ingeniería y Enseñanzas Técnicas.</p>
+            <p class="cuerpo_tabla_izq">Especialización en Humanidades.</p>
+            <p class="cuerpo_tabla_izq">Especialización en Ciencias Sociales.</p>
+            <p class="cuerpo_tabla_izq">Especialización en Inglés.</p>
+            <p class="cuerpo_tabla_izq">Especialización en Dibujo y Educación Plástica y Visual.</p>
+          </td>
+          <td class="cuerpo_tabla_centro">6</td>
+          <td class="cuerpo_tabla_izq">Optativa Especialidad.</td>
+          <td class="cuerpo_tabla_izq">Semestral.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">
+            <p class="cuerpo_tabla_izq">Aprendizaje y Enseñanza de las Materias Correspondientes.</p>
+            <p class="cuerpo_tabla_izq">Especialización en Lengua y Literatura.</p>
+            <p class="cuerpo_tabla_izq">Especialización en Matemáticas.</p>
+            <p class="cuerpo_tabla_izq">Especialización en Ciencias Experimentales.</p>
+            <p class="cuerpo_tabla_izq">Especialización en Ingeniería y Enseñanzas Técnicas.</p>
+            <p class="cuerpo_tabla_izq">Especialización en Humanidades.</p>
+            <p class="cuerpo_tabla_izq">Especialización en Ciencias Sociales.</p>
+            <p class="cuerpo_tabla_izq">Especialización en Inglés.</p>
+            <p class="cuerpo_tabla_izq">Especialización en Dibujo y Educación Plástica y Visual.</p>
+          </td>
+          <td class="cuerpo_tabla_centro">12</td>
+          <td class="cuerpo_tabla_izq">Optativa Especialidad.</td>
+          <td class="cuerpo_tabla_izq">Anual.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">
+            <p class="cuerpo_tabla_izq">Innovación Docente e Iniciación a la Investigación Educativa.</p>
+            <p class="cuerpo_tabla_izq">Especialización en Lengua y Literatura.</p>
+            <p class="cuerpo_tabla_izq">Especialización en Matemáticas.</p>
+            <p class="cuerpo_tabla_izq">Especialización en Ciencias Experimentales.</p>
+            <p class="cuerpo_tabla_izq">Especialización en Ingeniería y Enseñanzas Técnicas.</p>
+            <p class="cuerpo_tabla_izq">Especialización en Humanidades.</p>
+            <p class="cuerpo_tabla_izq">Especialización en Ciencias Sociales.</p>
+            <p class="cuerpo_tabla_izq">Especialización en Inglés.</p>
+            <p class="cuerpo_tabla_izq">Especialización en Dibujo y Educación Plástica y Visual.</p>
+          </td>
+          <td class="cuerpo_tabla_centro">6</td>
+          <td class="cuerpo_tabla_izq">Optativa Especialidad.</td>
+          <td class="cuerpo_tabla_izq">Semestral.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">
+            <p class="cuerpo_tabla_izq">Los ámbitos de la orientación educativa y el asesoramiento psicopedagógico.</p>
+            <p class="cuerpo_tabla_izq">Especialización en Orientación Educativa.</p>
+          </td>
+          <td class="cuerpo_tabla_centro">6</td>
+          <td class="cuerpo_tabla_izq">Optativa Especialidad.</td>
+          <td class="cuerpo_tabla_izq">Semestral.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">
+            <p class="cuerpo_tabla_izq">Los procesos de la orientación educativa y el asesoramiento psicopedagógico.</p>
+            <p class="cuerpo_tabla_izq">Especialización en Orientación Educativa.</p>
+          </td>
+          <td class="cuerpo_tabla_centro">6</td>
+          <td class="cuerpo_tabla_izq">Optativa Especialidad.</td>
+          <td class="cuerpo_tabla_izq">Semestral.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">
+            <p class="cuerpo_tabla_izq">Educación inclusiva y atención a la diversidad.</p>
+            <p class="cuerpo_tabla_izq">Especialización en Orientación Educativa.</p>
+          </td>
+          <td class="cuerpo_tabla_centro">6</td>
+          <td class="cuerpo_tabla_izq">Optativa Especialidad.</td>
+          <td class="cuerpo_tabla_izq">Semestral.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">
+            <p class="cuerpo_tabla_izq">La investigación e innovación educativa y la gestión del cambio.</p>
+            <p class="cuerpo_tabla_izq">Especialización en Orientación Educativa.</p>
+          </td>
+          <td class="cuerpo_tabla_centro">6</td>
+          <td class="cuerpo_tabla_izq">Optativa Especialidad.</td>
+          <td class="cuerpo_tabla_izq">Semestral.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq" colspan="4">Practicum común modalidad presencial y semipresencial (16 ECTS).</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">Practicum en la especialización.</td>
+          <td class="cuerpo_tabla_centro">10</td>
+          <td class="cuerpo_tabla_izq">Practicum.</td>
+          <td class="cuerpo_tabla_izq">Semestral.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">Trabajo Fin de Máster.</td>
+          <td class="cuerpo_tabla_centro">6</td>
+          <td class="cuerpo_tabla_izq">Trabajo Fin de Máster.</td>
+          <td class="cuerpo_tabla_izq">Semestral.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="centro_negrita">Plan de estudios del título de Máster Universitario en Periodismo Cultural por la Universidad San Pablo-CEU</p>
+    <p class="centro_cursiva">Planificación de las enseñanzas</p>
+    <p class="centro_redonda">Resumen del plan de estudios y su distribución en créditos</p>
+    <table class="tabla">
+      <thead>
+        <tr>
+          <th class="cabeza_tabla">Tipo de materia</th>
+          <th class="cabeza_tabla">Créditos ECTS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cuerpo_tabla_izq">Obligatorias.</td>
+          <td class="cuerpo_tabla_centro">41</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">Prácticas Externas.</td>
+          <td class="cuerpo_tabla_centro">10</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">Trabajo Fin de Máster.</td>
+          <td class="cuerpo_tabla_centro">9</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">  Total.</td>
+          <td class="cuerpo_tabla_centro">60</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="centro_redonda">Distribución general del plan de estudios</p>
+    <table class="tabla_ancha">
+      <thead>
+        <tr>
+          <th class="cabeza_tabla">Materia</th>
+          <th class="cabeza_tabla">ECTS</th>
+          <th class="cabeza_tabla">Carácter</th>
+          <th class="cabeza_tabla">Organización temporal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Concepto de Cultura en la Sociedad Contemporánea.</td>
+          <td class="cuerpo_tabla_centro">2</td>
+          <td class="cuerpo_tabla_izq">Obligatoria.</td>
+          <td class="cuerpo_tabla_izq">1.º Cuatrimestre.</td>
+        </tr>
+        <tr>
+          <td>Géneros Informativos del Periodismo Cultural.</td>
+          <td class="cuerpo_tabla_centro">3</td>
+          <td class="cuerpo_tabla_izq">Obligatoria.</td>
+          <td class="cuerpo_tabla_izq">1.º Cuatrimestre.</td>
+        </tr>
+        <tr>
+          <td>Géneros de Opinión del Periodismo Cultural.</td>
+          <td class="cuerpo_tabla_centro">3</td>
+          <td class="cuerpo_tabla_izq">Obligatoria.</td>
+          <td class="cuerpo_tabla_izq">1.º Cuatrimestre.</td>
+        </tr>
+        <tr>
+          <td>Canales de Información Cultural.</td>
+          <td class="cuerpo_tabla_centro">4</td>
+          <td class="cuerpo_tabla_izq">Obligatoria.</td>
+          <td class="cuerpo_tabla_izq">1.º Cuatrimestre.</td>
+        </tr>
+        <tr>
+          <td>Producción Cultural.</td>
+          <td class="cuerpo_tabla_centro">3</td>
+          <td class="cuerpo_tabla_izq">Obligatoria.</td>
+          <td class="cuerpo_tabla_izq">1.º Cuatrimestre.</td>
+        </tr>
+        <tr>
+          <td>Crítica Literaria e Industria Editorial.</td>
+          <td class="cuerpo_tabla_centro">4</td>
+          <td class="cuerpo_tabla_izq">Obligatoria.</td>
+          <td class="cuerpo_tabla_izq">2.º Cuatrimestre.</td>
+        </tr>
+        <tr>
+          <td>Miscelánea de Géneros Culturales: Crónica de Viajes, Crítica Gastronómica y Crónica Taurina.</td>
+          <td class="cuerpo_tabla_centro">4</td>
+          <td class="cuerpo_tabla_izq">Obligatoria.</td>
+          <td class="cuerpo_tabla_izq">2.º Cuatrimestre.</td>
+        </tr>
+        <tr>
+          <td>Crítica de Arte.</td>
+          <td class="cuerpo_tabla_centro">5</td>
+          <td class="cuerpo_tabla_izq">Obligatoria.</td>
+          <td class="cuerpo_tabla_izq">2.º Cuatrimestre.</td>
+        </tr>
+        <tr>
+          <td>Crítica Teatral.</td>
+          <td class="cuerpo_tabla_centro">4</td>
+          <td class="cuerpo_tabla_izq">Obligatoria.</td>
+          <td class="cuerpo_tabla_izq">2.º Cuatrimestre.</td>
+        </tr>
+        <tr>
+          <td>Periodismo Musical y sus Géneros.</td>
+          <td class="cuerpo_tabla_centro">4</td>
+          <td class="cuerpo_tabla_izq">Obligatoria.</td>
+          <td class="cuerpo_tabla_izq">2.º Cuatrimestre.</td>
+        </tr>
+        <tr>
+          <td>Crítica de Cine e Industria Cinematográfica.</td>
+          <td class="cuerpo_tabla_centro">5</td>
+          <td class="cuerpo_tabla_izq">Obligatoria.</td>
+          <td class="cuerpo_tabla_izq">2.º Cuatrimestre.</td>
+        </tr>
+        <tr>
+          <td>Prácticas Externas.</td>
+          <td class="cuerpo_tabla_centro">10</td>
+          <td class="cuerpo_tabla_izq">Prácticas Externas.</td>
+          <td class="cuerpo_tabla_izq">2.º Semestre.</td>
+        </tr>
+        <tr>
+          <td>Trabajo Fin de Máster.</td>
+          <td class="cuerpo_tabla_centro">9</td>
+          <td class="cuerpo_tabla_izq">Trabajo Fin de Máster.</td>
+          <td class="cuerpo_tabla_izq">2.º Cuatrimestre.</td>
+        </tr>
+      </tbody>
+    </table>
+  </texto>
+</documento>
