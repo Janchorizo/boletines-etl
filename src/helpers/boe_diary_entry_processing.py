@@ -1,32 +1,37 @@
-from typing import Callable, Set, Generator, Iterable, Dict, List
+"""Utility methods for processing BOE diary entries."""
 
+from typing import Dict, Tuple
 import functools
 
 from . import helpers
 from . import boe
 
-def get_labels_from_tree(tree):
+
+def get_labels_from_tree(tree) -> Tuple:
+    """Extract labels of a diary entry's analysis section."""
     tree_search = helpers.use_tree_for_search(tree)
     topics = tree_search(boe.EntryXpath.topics)
     alerts = tree_search(boe.EntryXpath.alerts)
-    
+
     labels = helpers.pipe(topics + alerts,
-        functools.partial(map, lambda x: x.xpath('text()')),
-        functools.partial(map, ''.join),
-        set,
-        tuple)
+                          functools.partial(map, lambda x: x.xpath('text()')),
+                          functools.partial(map, ''.join),
+                          set,
+                          tuple)
     return labels
 
-def get_reference_details(node):
+
+def get_reference_details(node) -> Dict:
+    """Extract details of a diary entry reference."""
     tree_search = helpers.use_tree_for_search(node)
     reference_type_search = tree_search(boe.EntryXpath.reference_type)
     reference_text_search = tree_search(boe.EntryXpath.reference_text)
-    
+
     if len(reference_type_search) == 0 or len(reference_text_search) == 0:
         return {}
 
-    reference_type = reference_type_search = reference_type[0]
-    reference_text = reference_text_search = reference_text[0]
+    reference_type = reference_type_search = reference_type_search[0]
+    reference_text = reference_text_search = reference_text_search[0]
 
     details = {
         'referenced': node.get(boe.EntryAttribute.reference_entry_id),
@@ -36,20 +41,21 @@ def get_reference_details(node):
     }
     return details
 
-def get_references_from_tree(tree):
+
+def get_references_from_tree(tree) -> Tuple:
+    """Extract details and type of the references of a diary entry."""
     tree_search = helpers.use_tree_for_search(tree)
     prev = tree_search(boe.EntryXpath.previous)
     post = tree_search(boe.EntryXpath.posterior)
-    
-    prev_references = helpers.pipe(prev,
+
+    prev_references = helpers.pipe(
+        prev,
         functools.partial(map, lambda x: {**get_reference_details(x), **{'category': 'previous'}}),
-        functools.partial(map, lambda x: 'referenced' in x)
-        )
+        functools.partial(map, lambda x: 'referenced' in x))
 
-    post_references = helpers.pipe(post,
+    post_references = helpers.pipe(
+        post,
         functools.partial(map, lambda x: {**get_reference_details(x), **{'category': 'posterior'}}),
-        functools.partial(map, lambda x: 'referenced' in x)
-        )
-    
-    return [*prev_references, *post_references]
+        functools.partial(map, lambda x: 'referenced' in x))
 
+    return (*prev_references, *post_references)
