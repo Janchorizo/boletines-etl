@@ -12,3 +12,5 @@ mysql-connector-python
 pydocstyle
 pycodestyle
 pylint
+psycopg2
+SQLAlchemy
