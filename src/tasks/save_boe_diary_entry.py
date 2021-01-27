@@ -63,14 +63,18 @@ class SaveEntryToDB(luigi.Task):
         return self.get_target()
 
     def complete(self):
-        with self.connect() as cursor:
-            cursor.execute(f"select * from boe_diary_entry where id = '{self.entry.get('id')}';")
-            return len(cursor.fetchall()) == 1
+        with self.connect() as connection:
+            with connection.cursor() as cursor:
+                cursor.execute(f"select * from boe_diary_entry where id = '{self.entry.get('id')}';")
+                return len(cursor.fetchall()) == 1
 
     def get_sql_query(self):
         with self.input().open('r') as f:
             item = json.loads(f.read())
         item.update(self.entry)
+        for k in item:
+            if hasattr(item[k], 'replace'):
+                item[k] = item[k].replace("'", '"')
 
         if not boe_db.boe_diary_entry_is_valid(item):
             raise Exception('Entry does not meet requirements')
@@ -85,10 +89,12 @@ class SaveEntryToDB(luigi.Task):
         return connection
 
     def run(self):
-        with self.connect() as cursor:
-            print(self.get_sql_query())
-            cursor.execute(self.get_sql_query())
-        self.get_target().touch()
+        with self.connect() as connection:
+            with connection.cursor() as cursor:
+                print(self.get_sql_query())
+                cursor.execute(self.get_sql_query())
+            connection.commit()
+            self.get_target().touch()
 
 
 class IndexEntryInES(luigi.Task):
