@@ -5,6 +5,7 @@ import luigi
 
 from tasks.save_boe_diary import SaveBoeDiary
 from tasks.save_boe_diary_entry import SaveBoeDiaryEntry, SaveOption
+from tasks.process_boe_diary import ProcessBoeDiary
 
 class Pipeline(luigi.WrapperTask):
     date = luigi.DateParameter()
@@ -19,7 +20,7 @@ class Pipeline(luigi.WrapperTask):
         with self.input().open('r') as f:
             diary_entries = json.loads(f.read())
         
-        yield (SaveBoeDiaryEntry(entry=entry, save_options=(SaveOption.DATABASE.value, SaveOption.ELASTICSEARCH.value))
+        yield (SaveBoeDiaryEntry(entry=entry, save_options=(SaveOption.DATABASE.value,))
                for entry 
                in diary_entries)
 
