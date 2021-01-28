@@ -13,3 +13,5 @@ pydocstyle
 pycodestyle
 pylint
 SQLAlchemy
+matplotlib
+plotly
