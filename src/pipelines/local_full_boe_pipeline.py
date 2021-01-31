@@ -20,7 +20,7 @@ class Pipeline(luigi.WrapperTask):
         with self.input().open('r') as f:
             diary_entries = json.loads(f.read())
         
-        yield (SaveBoeDiaryEntry(entry=entry, save_options=(SaveOption.DATABASE.value,))
+        yield (SaveBoeDiaryEntry(entry=entry, save_options=(SaveOption.DATABASE.value, SaveOption.ELASTICSEARCH.value))
                for entry 
                in diary_entries)
 
