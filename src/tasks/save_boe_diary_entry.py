@@ -97,7 +97,7 @@ class SaveEntryToDB(luigi.Task):
             self.get_target().touch()
 
 
-class IndexEntryInES(luigi.Task):
+class IndexEntryInS3(luigi.Task):
     entry = luigi.DictParameter()
 
     def requires(self):
