@@ -37,7 +37,7 @@ class ProcessBoeDiary(luigi.Task):
             boe_diary_processing.get_items_per_department,
             boe_diary_processing.get_details_per_item,
             functools.partial(map, lambda item: {**item, 'date':self.date.isoformat()})))
-                                
+
         with self.output().open('w') as f:
             json.dump(items, f)
 
