@@ -53,6 +53,7 @@ class SummaryAttribute:
     item_control = 'control'
     
 class EntryXpath:
+    #metadata
     enty_id = '/documento/metadatos/identificador'
     title = '/documento/metadatos/titulo'
     diary_number = '/documento/metadatos/diario_numero'
@@ -61,11 +62,16 @@ class EntryXpath:
     entry_range = '/documento/metadatos/rango'
     initial_page = '/documento/metadatos/pagina_inicial'
     last_page = '/documento/metadatos/pagina_final'
+    #analysis
     notes = '/documento/analisis/notas'
     topics = '/documento/analisis/materias/materia'
+    topics_cpv = '/documento/analisis/materia_cpv'
+    modality = '/documento/analisis/modalidad[@codigo]'
+    procediment = '/documento/analisis/procedimiento'
     alerts = '/documento/analisis/alertas/alerta'
     previous = '/documento/analisis/referencias/anteriores/anterior'
     posterior = '/documento/analisis/referencias/posteriores/posterior'
+    #content
     reference_type = './palabra'
     reference_text = './texto'
     contents = '/documento/texto'
@@ -85,3 +91,22 @@ class EntryParagraphType(Enum):
     paragraph = 'parrafo'
     article = 'articulo'
     
+section_codes = {
+    '1': 'disposiciones generales',
+    '2': 'autoridades y personal',
+    '2a': 'nombramientos situaciones e incidencias',
+    '2b': 'oposiciones y concursos',
+    '3': 'otras secciones',
+    '4': 'administración de justicia',
+    '5': 'anuncios',
+    '5a': 'licitaciones públicas y adjudicaciones',
+    '5b': 'otros anuncios particulares',
+    '5c': 'anuncios particulares',
+    't': 'tribunal constitucional'
+}
+
+modality_codes = {
+    'L' = 'Licitación'.
+    'F' = 'Formalización de contrato'.
+    'O' = 'Otros'.
+}

@@ -13,6 +13,10 @@ def pipe(initial_value: Any, *args:Callable[[Any], Any]) -> Any:
     
     return functools.reduce(chain_function, args, initial_value)
 
+def partialmap(f:Callable)->Callable:
+    '''Create a partial mapping for a provided function.'''
+    return functools.partial(map, f)
+
 def fetch_page(url: str, max_tries=3)->Response:
     '''Try to fetch a given url up to max_tries times.'''
     
