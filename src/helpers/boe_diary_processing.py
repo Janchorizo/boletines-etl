@@ -9,19 +9,20 @@ from . import helpers
 from . import boe
 
 def get_sections(tree) -> Generator:
-    sections = ((section.get(boe.SummaryAttribute.section_number), section)
-            for section
-            in helpers.use_tree_for_search(tree)(boe.SummaryXpath.section))
+    sections = (
+        (section.get(boe.SummaryAttribute.section_number), section)
+        for section
+        in helpers.use_tree_for_search(tree)(boe.SummaryXpath.section))
     
     return sections
 
 def get_departments_per_section(sections) -> Generator:
     departments = (
-            (section_number, department.get(boe.SummaryAttribute.department_name), department)
-            for (section_number, section)
-            in sections
-            for department
-            in helpers.use_tree_for_search(section)(boe.SummaryXpath.department))
+        (section_number, department.get(boe.SummaryAttribute.department_name), department)
+        for (section_number, section)
+        in sections
+        for department
+        in helpers.use_tree_for_search(section)(boe.SummaryXpath.department))
     
     return departments
 
