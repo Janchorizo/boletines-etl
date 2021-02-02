@@ -18,7 +18,7 @@ deactivate:
 
 nb:
 	. ./venv/bin/activate
-	PYTHONPATH=. jupyter-notebook ./src --no-browser
+	PYTHONPATH=. jupyter-notebook ./notebooks --no-browser
 
 create_mariadb:
 	docker run -p 3306:3306 --name maria -e MYSQL_ROOT_PASSWORD=pass -e MYSQL_USER=jancho -d mariadb
