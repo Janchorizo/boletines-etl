@@ -91,7 +91,7 @@ class EntryParagraphType(Enum):
     paragraph = 'parrafo'
     article = 'articulo'
     
-section_codes = {
+code_to_section_name = {
     '1': 'disposiciones generales',
     '2': 'autoridades y personal',
     '2a': 'nombramientos situaciones e incidencias',
@@ -105,8 +105,8 @@ section_codes = {
     't': 'tribunal constitucional'
 }
 
-modality_codes = {
-    'L' = 'Licitación'.
-    'F' = 'Formalización de contrato'.
-    'O' = 'Otros'.
+code_to_modality_name = {
+    'L': 'Licitación',
+    'F': 'Formalización de contrato',
+    'O': 'Otros',
 }
