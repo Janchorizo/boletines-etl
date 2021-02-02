@@ -20,4 +20,17 @@ nb:
 	. ./venv/bin/activate
 	PYTHONPATH=. jupyter-notebook ./src --no-browser
 
-.PHONY: install uninstall activate nb activate deactivate
+create_mariadb:
+	docker run -p 3306:3306 --name maria -e MYSQL_ROOT_PASSWORD=pass -e MYSQL_USER=jancho -d mariadb
+
+start_mariadb:
+	docker container start mariadb
+
+stop_mariadb:
+	docker container stop mariadb
+
+enter_mariadb:
+	@echo "Use password \"pass\""
+	docker exec -it maria mysql -u root -p
+
+.PHONY: install uninstall activate nb activate deactivate create_mariadb start_mariadb stop_mariadb enter_mariadb
