@@ -1,5 +1,6 @@
 from typing import Callable, Set, Generator, Iterable, Dict, List
-
+import locale
+import re
 import functools
 
 from . import helpers
@@ -44,3 +45,30 @@ def get_references_from_tree(tree):
     
     return [*prev_references, *post_references]
 
+_supported_modalities = (boe.code_to_modality_name['F'], boe.code_to_modality_name['L'])
+_money_regex = re.compile('[0-9]+\.?[0-9]*\,?[0-9]* euros')
+_amount_regex = re.compile('[0-9]+\.?[0-9]*\,?[0-9]*')
+_preceding_regex = re.compile('(oferta seleccionada)|(valor estimado)', re.IGNORECASE)
+locale.setlocale(locale.LC_ALL,"")
+def get_cost(tree):
+    '''
+    All evaluated costs appear in a `<dd/>` element after a `<dt/>` with a 
+    _"valor estimado"_ or _"oferta seleccionada"_ text in it.
+    See notebook 'boe_diary_entry_processing' for further information.
+    '''
+    search = helpers.use_tree_for_search(tree)
+    cost = 0
+    
+    modality = search(boe.EntryXpath.modality)
+    if len(modality) != 1 or modality[0].text not in _supported_modalities:
+        return cost
+    
+    for dd in search('//dt/following-sibling::dd'):
+        ammounts = _money_regex.findall(dd.text)
+        preceding_texts = _preceding_regex.findall(dd.getprevious().text)
+
+        if len(ammounts) == 1 and len(preceding_texts) > 0:
+            cost = locale.atof(_amount_regex.match(dd.text)[0])
+            break
+    
+    return cost
