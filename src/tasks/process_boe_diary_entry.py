@@ -31,11 +31,15 @@ class ProcessBoeDiaryEntry(luigi.Task):
             entry_content = f.read()
         
         tree = et.fromstring(entry_content.encode())
+        cost = processing.get_cost_from_tree(tree)
         labels = processing.get_labels_from_tree(tree)
         references = processing.get_references_from_tree(tree)
 
-        print({'labels': labels, 'references': references})
-                                
-        with self.output().open('w') as f:
-            json.dump({'labels': labels, 'references': references}, f)
+        data = {
+            'labels': labels,
+            'references': references,
+            'economic_impact': cost
+        }
 
+        with self.output().open('w') as f:
+            json.dump(data, f)
