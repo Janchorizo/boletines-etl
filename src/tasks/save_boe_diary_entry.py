@@ -91,8 +91,9 @@ class SaveEntryToDB(luigi.Task):
     def run(self):
         with self.connect() as connection:
             with connection.cursor() as cursor:
-                print(self.get_sql_query())
-                cursor.execute(self.get_sql_query())
+                query = self.get_sql_query()
+                print(query)
+                cursor.execute(query)
             connection.commit()
             self.get_target().touch()
 
