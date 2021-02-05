@@ -50,7 +50,7 @@ _money_regex = re.compile('[0-9]+\.?[0-9]*\,?[0-9]* euros')
 _amount_regex = re.compile('[0-9]+\.?[0-9]*\,?[0-9]*')
 _preceding_regex = re.compile('(oferta seleccionada)|(valor estimado)', re.IGNORECASE)
 locale.setlocale(locale.LC_ALL,"")
-def get_cost(tree):
+def get_cost_from_tree(tree):
     '''
     All evaluated costs appear in a `<dd/>` element after a `<dt/>` with a 
     _"valor estimado"_ or _"oferta seleccionada"_ text in it.
