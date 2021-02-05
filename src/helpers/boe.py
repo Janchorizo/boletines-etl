@@ -107,6 +107,6 @@ code_to_section_name = {
 
 code_to_modality_name = {
     'L': 'Licitación',
-    'F': 'Formalización de contrato',
+    'F': 'Formalización contrato',
     'O': 'Otros',
 }
