@@ -72,6 +72,7 @@ class SaveEntryToDB(luigi.Task):
         with self.input().open('r') as f:
             item = json.loads(f.read())
         item.update(self.entry)
+
         for k in item:
             if hasattr(item[k], 'replace'):
                 item[k] = item[k].replace("'", '"')
@@ -92,7 +93,6 @@ class SaveEntryToDB(luigi.Task):
         with self.connect() as connection:
             with connection.cursor() as cursor:
                 query = self.get_sql_query()
-                print(query)
                 cursor.execute(query)
             connection.commit()
             self.get_target().touch()
