@@ -21,7 +21,7 @@ For a range of dates:
 ```bash
 PYTHONPATH=. luigi \
     --module pipelines.local_no_indexing_boe_pipeline \
-    --RangeDaily --of Pipeline \
+    RangeDaily --of Pipeline \
     --start 2021-01-20 \
     --local-scheduler \
     --workers 3 \
