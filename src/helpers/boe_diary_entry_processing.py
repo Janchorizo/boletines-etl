@@ -1,4 +1,5 @@
 from typing import Callable, Set, Generator, Iterable, Dict, List
+from collections import namedtuple
 import locale
 import re
 import functools
@@ -44,6 +45,41 @@ def get_references_from_tree(tree):
             post)
     
     return [*prev_references, *post_references]
+
+EntryType = namedtuple('EntryType', 'type type_desc')
+
+def get_entry_type_from_tree(tree):
+    tree_search = helpers.use_tree_for_search(tree)
+    title_node = tree_search(boe.EntryXpath.title)[0]
+    title = title_node.text
+    
+    type_ = EntryType('', '')
+    if title.lower().startswith('anuncio de licitación'):
+        type_ = EntryType('anuncio de licitación',
+                          'un anuncio de licitación')
+    elif title.lower().startswith('ley'):
+        type_ = EntryType('ley',
+                          'una ley')
+    elif title.lower().startswith('anuncio de formalización de contratos'):
+        type_ = EntryType('anuncio de formalización de contratos',
+                          'un anuncio de formalización de contratos')
+    elif 'resuelve' in title.lower() and 'convocatoria' in title.lower():
+        type_ = EntryType('resolución de convocatoria',
+                          'una resolución de convocatoria')
+    elif 'convocatoria' in title.lower():
+        type_ = EntryType('convocatoria',
+                          'una convocatoria')
+    elif 'jubilación' in title.lower():
+        type_ = EntryType('jubilación',
+                          'una jubilación')
+    elif 'cese' in title.lower():
+        type_ = EntryType('cese',
+                          'un cese')
+    elif 'nombra' in title.lower():
+        type_ = EntryType('nobramiento de cargo',
+                          'un nobramiento de cargo')
+    return type_
+
 
 _supported_modalities = (boe.code_to_modality_name['F'], boe.code_to_modality_name['L'])
 _money_regex = re.compile('[0-9]+\.?[0-9]*\,?[0-9]* euros')
