@@ -34,11 +34,14 @@ class ProcessBoeDiaryEntry(luigi.Task):
         cost = processing.get_cost_from_tree(tree)
         labels = processing.get_labels_from_tree(tree)
         references = processing.get_references_from_tree(tree)
+        type_ = processing.get_entry_type_from_tree(tree)
 
         data = {
             'labels': labels,
             'references': references,
-            'economic_impact': cost
+            'economic_impact': cost,
+            'type': type_.type,
+            'type_desc': type_.type_desc,
         }
 
         with self.output().open('w') as f:
