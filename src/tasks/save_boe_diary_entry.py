@@ -78,6 +78,7 @@ class SaveEntryToDB(luigi.Task):
                 item[k] = item[k].replace("'", '"')
 
         if not boe_db.boe_diary_entry_is_valid(item):
+            print(item.keys())
             raise Exception('Entry does not meet requirements')
 
         return boe_db.boe_diary_entry_query(item)
