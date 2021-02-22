@@ -9,8 +9,7 @@ import luigi
 from params.global_params import GlobalParams
 from params.db_params import DBParams
 from helpers import boe
-from helpers import helpers
-from helpers import boe_diary_processing
+from tasks.save_boe_diary_summary_graph import SaveBoeDiarySummaryGraph
 
 def date_2_output_path (date: datetime.datetime) -> str:
     return path.join(GlobalParams().base_dir,
@@ -22,7 +21,7 @@ class MakeBoeDiarySummary(luigi.Task):
     table = 'boe_diary_entry'
 
     def requires(self):
-        return None
+        return SaveBoeDiarySummaryGraph(date=self.date)
 
     def output(self):
         return luigi.LocalTarget(date_2_output_path(self.date))
@@ -53,13 +52,13 @@ class MakeBoeDiarySummary(luigi.Task):
         entry_type_count = collections.Counter(d.type_desc for d in entries)
 
         summary = {
-            'day': f'{self.date:%Y-%m-%d}',
+            'date': f'{self.date:%Y-%m-%d}',
             'link': boe.summary_url_for_date(self.date),
             'entry_count': len(entries),
             'per_type_def_count': dict(entry_type_count),
             'economic_impact': sum(d.economic_impact for d in entries),
             'summary_graphic': {
-                'url': '',
+                'sftp_file': self.input().path,
                 'telegram_id': ''
             },
         }
