@@ -104,7 +104,8 @@ def get_cost_from_tree(tree):
         preceding_texts = _preceding_regex.findall(dd.getprevious().text)
 
         if len(ammounts) == 1 and len(preceding_texts) > 0:
-            cost = locale.atof(_amount_regex.match(dd.text)[0])
+            cost_str = _amount_regex.match(dd.text)[0]
+            cost = locale.atof(cost_str.replace('.', '').replace(',', '.'))
             break
     
     return cost
