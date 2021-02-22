@@ -1,72 +1,50 @@
+import datetime
 import json
-from enum import Enum
-import pymysql
+from urllib.parse import quote_plus
+
 import luigi
-from luigi.contrib import s3
-from luigi.contrib import mysqldb
+from pymongo import MongoClient
 
-from params.s3_params import S3Params
-from params.db_params import DBParams
-from tasks.process_boe_diary_entry import ProcessBoeDiaryEntry
-from helpers import boe_db
+from params.mongodb_params import MongoDBParams
+from tasks.make_boe_diary_summary import MakeBoeDiarySummary
 
-def entry_id_2_output_path (entry_id: str) -> str:
-    return path.join(GlobalParams().base_dir,
-                     'diary_entries', 
-                     f"boe_diary_entry_raw_{entry_id}.xml")
 
 class SaveBoeDiarySummary(luigi.Task):
-    entry = luigi.DictParameter()
-    table = 'boe_diary_entry'
+    collection = 'diary_summary'
+    date = luigi.DateParameter()
 
     def requires(self):
-        return ProcessBoeDiaryEntry(entry_id=self.entry.get('id'), 
-                                    entry_url=self.entry.get('xml_url'))
-
-    def get_target(self):
-        return mysqldb.MySqlTarget(
-            host = DBParams().host,
-            database = DBParams().database,
-            user = DBParams().user,
-            password = DBParams().password,
-            table = self.table,
-            update_id=str(self.entry.get('id')))
-
-    def output(self):
-        return self.get_target()
+        return MakeBoeDiarySummary(date=self.date)
 
     def complete(self):
-        with self.connect() as connection:
-            with connection.cursor() as cursor:
-                cursor.execute(f"select * from boe_diary_entry where id = '{self.entry.get('id')}';")
-                return len(cursor.fetchall()) == 1
+        formatted_date = '{:%Y-%m-%d}'.format(self.date)
+        uri = "mongodb://{}:{}@{}:{}/{}".format(
+            quote_plus(MongoDBParams().user),
+            quote_plus(MongoDBParams().password),
+            quote_plus(MongoDBParams().host),
+            quote_plus(MongoDBParams().port),
+            quote_plus(MongoDBParams().db)
+        )
+        
+        client = MongoClient(uri)
+        db = client[MongoDBParams().db]
+        exists = db[self.collection].find_one({'date': formatted_date}) is not None
+        client.close()
 
-    def get_sql_query(self):
-        with self.input().open('r') as f:
-            item = json.loads(f.read())
-        item.update(self.entry)
-
-        for k in item:
-            if hasattr(item[k], 'replace'):
-                item[k] = item[k].replace("'", '"')
-
-        if not boe_db.boe_diary_entry_is_valid(item):
-            print(item.keys())
-            raise Exception('Entry does not meet requirements')
-
-        return boe_db.boe_diary_entry_query(item)
-
-    def connect(self):
-        connection = pymysql.connect(host=DBParams().host,
-                                     user=DBParams().user,
-                                     password=DBParams().password,
-                                     db=DBParams().database)
-        return connection
+        return exists
 
     def run(self):
-        with self.connect() as connection:
-            with connection.cursor() as cursor:
-                query = self.get_sql_query()
-                cursor.execute(query)
-            connection.commit()
-            self.get_target().touch()
+        with self.input().open() as f:
+            summary = json.load(f)
+        
+        uri = "mongodb://{}:{}@{}:{}/{}".format(
+            quote_plus(MongoDBParams().user),
+            quote_plus(MongoDBParams().password),
+            quote_plus(MongoDBParams().host),
+            quote_plus(MongoDBParams().port),
+            quote_plus(MongoDBParams().db)
+        )
+        client = MongoClient(uri)
+        db = client[MongoDBParams().db]
+        db[self.collection].insert_one(summary)
+        client.close()
