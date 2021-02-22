@@ -20,29 +20,41 @@ within the `/src` folder you can run either of these commands.
 For a range of dates:
 ```bash
 PYTHONPATH=. luigi \
-    --module pipelines.local_no_indexing_boe_pipeline \
-    RangeDaily --of Pipeline \
+    --module pipelines.app_data_pipeline \
+    RangeDaily --of AppDataPipeline \
     --start 2021-01-20 \
     --local-scheduler \
     --workers 3 \
-    --GlobalParams-base-dir ./temp \
-    --DBParams-host localhost \
-    --DBParams-user root \
-    --DBParams-password pass \
-    --DBParams-database boe
+    --GlobalParams-base-dir x \
+    --DBParams-host x \
+    --DBParams-user x \
+    --DBParams-database x \
+    --DBParams-password x \
+    --SFTPParams-host x \
+    --SFTPParams-user x \
+    --SFTPParams-password x \
+    --MongoDBParams-host x \
+    --MongoDBParams-user x \
+    --MongoDBParams-password x \
+    --date 2021-02-19
 ```
 
 For a single date:
 ```bash
 PYTHONPATH=. luigi \
-    --module pipelines.local_no_indexing_boe_pipeline \
-    Pipeline \
+    --module pipelines.app_data_pipeline AppDataPipeline \
     --local-scheduler \
     --workers 3 \
-    --GlobalParams-base-dir ./temp \
-    --DBParams-host localhost \
-    --DBParams-user root \
-    --DBParams-password pass \
-    --DBParams-database boe \
-    --date 2021-01-26
+    --GlobalParams-base-dir x \
+    --DBParams-host x \
+    --DBParams-user x \
+    --DBParams-database x \
+    --DBParams-password x \
+    --SFTPParams-host x \
+    --SFTPParams-user x \
+    --SFTPParams-password x \
+    --MongoDBParams-host x \
+    --MongoDBParams-user x \
+    --MongoDBParams-password x \
+    --date 2021-02-19
 ```
