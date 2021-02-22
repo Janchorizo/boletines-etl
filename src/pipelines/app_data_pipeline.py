@@ -15,7 +15,7 @@ class AppDataPipeline(luigi.WrapperTask):
         return SaveBoeDiarySummary(date=self.date).complete()
 
     def requires(self):
-        no_indexing_boe_pipeline.Pipeline(date=self.date)
+        return no_indexing_boe_pipeline.Pipeline(date=self.date)
 
     def run(self):
         yield SaveBoeDiarySummary(date=self.date)
