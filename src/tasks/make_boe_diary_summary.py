@@ -50,10 +50,10 @@ class MakeBoeDiarySummary(luigi.Task):
             raise Exception(f'Data is not available. DB status {status}')
         
         entry_type_count = collections.Counter(d.type_desc for d in entries)
-
+        link = f'https://boe.es/boe/dias/{self.date:%Y/%m/%d}'
         summary = {
             'date': f'{self.date:%Y-%m-%d}',
-            'link': boe.summary_url_for_date(self.date),
+            'link': link,
             'entry_count': len(entries),
             'per_type_def_count': dict(entry_type_count),
             'economic_impact': sum(d.economic_impact for d in entries),
