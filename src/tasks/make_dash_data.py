@@ -66,10 +66,10 @@ class MakeDashData(luigi.Task):
         }
 
         # sankey
-        q = f'''select GROUP_CONCAT(boe_diary_section.name), department, count(department) as count
+        q = f'''select boe_diary_section.name, department, count(department) as count
             from boe_diary_entry, boe_diary_section
             where boe_diary_section.id = boe_diary_entry.section and boe_diary_entry.date = '{self.date:%Y-%m-%d}'
-            group by department;
+            group by department, section;
         '''
         Entry = collections.namedtuple('Entry', 'section department count')
 
@@ -90,7 +90,9 @@ class MakeDashData(luigi.Task):
             for section_name
             in section_names
         }
-        department_count = {entry.department: entry.count for entry in entries}
+        department_count = collections.defaultdict(int)
+        for entry in entries:
+            department_count[entry.department] += entry.count
         department_names = tuple(department_count.keys())
 
         labels = (
