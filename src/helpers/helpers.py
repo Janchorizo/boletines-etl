@@ -50,3 +50,15 @@ def use_xpath_for_search(xpath)->Callable:
     
     namespaces = dict(xmlns="http://www.w3.org/1999/xhtml")
     return lambda tree: tree.xpath(xpath, namespaces=namespaces)
+
+def shorttened(s, length=40, filler='...'):
+    if len(s) <= length:
+        return s
+    else:
+        overfill = len(s) - length
+        t_length = len(s)//2 - overfill//2
+        return ''.join((
+            s[:t_length],
+            filler,
+            s[t_length + overfill + len(filler):]
+        ))
